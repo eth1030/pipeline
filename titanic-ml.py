@@ -762,19 +762,19 @@ def auto_generated_pipeline():
     _kale_volume_step_names = []
     _kale_volume_name_parameters = []
 
-    _kale_marshal_vop = _kfp_dsl.VolumeOp(
-        name="kale-marshal-volume",
-        resource_name="kale-marshal-pvc",
-        modes=_kfp_dsl.VOLUME_MODE_RWM,
-        size="1Gi"
-    )
-    _kale_volume_step_names.append(_kale_marshal_vop.name)
-    _kale_volume_name_parameters.append(
-        _kale_marshal_vop.outputs["name"].full_name)
-    _kale_pvolumes_dict['/marshal'] = _kale_marshal_vop.volume
+    # _kale_marshal_vop = _kfp_dsl.VolumeOp(
+    #     name="kale-marshal-volume",
+    #     resource_name="kale-marshal-pvc",
+    #     modes=_kfp_dsl.VOLUME_MODE_RWM,
+    #     size="1Gi"
+    # )
+    # _kale_volume_step_names.append(_kale_marshal_vop.name)
+    # _kale_volume_name_parameters.append(
+    #     _kale_marshal_vop.outputs["name"].full_name)
+    # _kale_pvolumes_dict['/marshal'] = _kale_marshal_vop.volume
 
-    _kale_volume_step_names.sort()
-    _kale_volume_name_parameters.sort()
+    # _kale_volume_step_names.sort()
+    # _kale_volume_name_parameters.sort()
 
     _kale_loaddata_task = _kale_loaddata_op()\
         .add_pvolumes(_kale_pvolumes_dict)\
